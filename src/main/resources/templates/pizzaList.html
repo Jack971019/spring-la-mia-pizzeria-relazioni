@@ -16,17 +16,17 @@
 
 <table class = "table">
     <thead>
-    <tr>
+    <tr class ="text-danger">
         <th> Nome </th>
         <th> Descrizione </th>
-        <th> Prezzo </th>
+        <th class ="text-primary"> Prezzo </th>
     </tr>
     </thead>
     <tbody>
     <tr th:each = "pizza : ${pizzas}">
         <th th:text = "${pizza.name}"></th>
         <th th:text = "${pizza.description}"></th>
-        <th th:text = "${pizza.price}"></th>
+        <th class="text-primary" th:text = "${pizza.price}"></th>
 
     </tr>
 
