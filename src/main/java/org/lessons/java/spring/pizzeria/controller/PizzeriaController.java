@@ -22,19 +22,20 @@ public class PizzeriaController {
     private PizzaRepository pizzaRepository;
 
     @GetMapping
-    public String pizzeria(Model model){
+    public String pizzeria(Model model) {
 
         List<Pizza> pizzaList = pizzaRepository.findAll();
         model.addAttribute("pizzas", pizzaList);
         return "pizzaList";
     }
 
-    @GetMapping ("/show/{pizzaId}")
-    public String show(@PathVariable("pizzaId") Integer id, Model model){
+    @GetMapping("/show/{pizzaId}")
+    public String show(@PathVariable("pizzaId") Integer id, Model model) {
         Optional<Pizza> pizzaOptional = pizzaRepository.findById(id);
-        if (pizzaOptional.isPresent()){
+        if (pizzaOptional.isPresent()) {
             Pizza pizzaFromDB = pizzaOptional.get();
             model.addAttribute("pizza", pizzaFromDB);
+
             return "detail";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
