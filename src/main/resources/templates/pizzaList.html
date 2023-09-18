@@ -14,21 +14,21 @@
 
 <h1> Pizza List </h1>
 
-<table class = "table">
+<table class="table">
     <thead>
-    <tr class ="text-danger">
-        <th> Nome </th>
-        <th> Descrizione </th>
-        <th class ="text-primary"> Prezzo </th>
+    <tr class="text-danger">
+        <th> Nome</th>
+        <th> Descrizione</th>
+        <th class="text-primary"> Prezzo</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each = "pizza : ${pizzas}">
-        <th th:text = "${pizza.name}"></th>
-        <th th:text = "${pizza.description}"></th>
-        <th class="text-primary" th:text = "${pizza.price}"></th>
+    <tr th:each="pizza : ${pizzas}">
+        <th th:text="${pizza.name}"></th>
+        <th th:text="${pizza.description}"></th>
+        <th class="text-primary" th:text="${pizza.price}"></th>
         <th>
-            <a type="button" class="btn btn-link" th:href = "@{/pizzas/show/{id}(id=${pizza.id})}">detail</a>
+            <a type="button" class="btn btn-link" th:href="@{/show/{id}(id=${pizza.id})}">detail</a>
         </th>
 
     </tr>
