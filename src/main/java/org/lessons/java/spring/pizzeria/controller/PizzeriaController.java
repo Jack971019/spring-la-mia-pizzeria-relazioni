@@ -1,5 +1,6 @@
 package org.lessons.java.spring.pizzeria.controller;
 
+import jakarta.validation.Valid;
 import org.lessons.java.spring.pizzeria.model.Pizza;
 import org.lessons.java.spring.pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,14 @@ public class PizzeriaController {
     }
 
     @PostMapping("/create")
-    public String doCreate(@ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
-        formPizza.setName(formPizza.getName().toUpperCase());
-        pizzaRepository.save(formPizza);
+    public String doCreate(@Valid @ModelAttribute("pizza") Pizza createPizza, BindingResult bindingResult) {
+        System.out.println("name:" + createPizza.getName());
+        System.out.println(bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "/create";
+        }
+        createPizza.setName(createPizza.getName().toUpperCase());
+        pizzaRepository.save(createPizza);
         return "redirect:/";
     }
 }

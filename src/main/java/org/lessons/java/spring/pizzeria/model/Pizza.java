@@ -4,17 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jdk.jfr.Name;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+
 @Entity
 public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank(message = "il nome non deve essere vuoto")
     private String name;
+    @NotBlank(message = "la descrizione non deve essere vuota")
     private String description;
+
+    @NotNull
     private BigDecimal price;
 
     public int getId() {
