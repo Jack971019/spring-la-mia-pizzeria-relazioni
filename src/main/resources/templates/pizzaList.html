@@ -20,29 +20,32 @@
 
     <div class="table">
         <thead>
+
         <tr class="text-danger">
             <th> Nome</th>
             <th> Descrizione</th>
             <th class="text-primary"> Prezzo</th>
         </tr>
+
         </thead>
         <table>
-        <tr th:each="pizza : ${pizzas}">
-            <th th:text="${pizza.name}"></th>
-            <th th:text="${pizza.description}"></th>
-            <th class="text-primary" th:text="${pizza.price}"></th>
-            <th>
-                <a type="button" class="btn btn-link" th:href="@{/show/{id}(id=${pizza.id})}">detail</a>
-            </th>
+            <tr th:each="pizza : ${pizzas}">
+                <th th:text="${pizza.name}"></th>
+                <th th:text="${pizza.description}"></th>
+                <th class="text-primary" th:text="${pizza.price}"></th>
+                <th>
+                    <a class="btn btn-primary" th:href="@{/show/{id}(id=${pizza.id})}">Detail</a>
+                    <a class="btn btn-primary" th:href="@{/edit/{id}(id=${pizza.id})}">Edit</a>
+                    <a class="btn btn-primary" th:href="@{/delete/{id}(id=${pizza.id})}">Delete</a>
 
-        </tr>
+                </th>
+
+            </tr>
 
 
-
-</tbody>
         </table>
     </div>
-
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
