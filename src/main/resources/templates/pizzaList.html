@@ -19,28 +19,35 @@
     <a class="btn btn-primary" th:href="@{/create}">Add pizza</a>
 
     <div class="table">
-        <thead>
+        <table class="table">
+            <thead>
 
-        <tr class="text-danger">
-            <th> Nome</th>
-            <th> Descrizione</th>
-            <th class="text-primary"> Prezzo</th>
-        </tr>
+            <tr class="text-danger">
+                <th> Nome</th>
+                <th> Descrizione</th>
+                <th class="text-primary"> Prezzo</th>
+            </tr>
 
-        </thead>
-        <table>
+            </thead>
+            <tbody>
+
             <tr th:each="pizza : ${pizzas}">
                 <th th:text="${pizza.name}"></th>
                 <th th:text="${pizza.description}"></th>
                 <th class="text-primary" th:text="${pizza.price}"></th>
-                <th>
+                <th class="d-flex align-items-center justify-content-between">
                     <a class="btn btn-primary" th:href="@{/show/{id}(id=${pizza.id})}">Detail</a>
                     <a class="btn btn-primary" th:href="@{/edit/{id}(id=${pizza.id})}">Edit</a>
-                    <a class="btn btn-primary" th:href="@{/delete/{id}(id=${pizza.id})}">Delete</a>
+                    <form th:action="@{/delete/{id}(id=${pizza.id})}" method="POST">
+                        <button type="submit" class="btn btn-primary">
+                            Delete
+                        </button>
+                    </form>
 
                 </th>
 
             </tr>
+            </tbody>
 
 
         </table>
