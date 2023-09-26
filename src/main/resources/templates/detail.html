@@ -12,5 +12,26 @@
 <p th:text="${pizza.description}"></p>
 <p th:text="${pizza.price}"></p>
 
+<div class="my-3">
+    <!-- link che porta alla pagina per creare un borrowing: devo portarmi dietro l'id del book -->
+    <a class="btn btn-primary" th:href="@{/specialOffers/create(pizzaId=${pizza.id})}">Add
+        special offer</a>
+</div>
+
+<thead>
+<tr>
+    <th>Title</th>
+    <th>start date</th>
+    <th>expire date</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="specialOffer : ${pizza.specialOffers}">
+    <td th:text="${specialOffer.title}"></td>
+    <td th:text="${specialOffer.startDate}"></td>
+    <td th:text="${specialOffer.expireDate}"></td>
+</tr>
+</tbody>
+
 </body>
 </html>

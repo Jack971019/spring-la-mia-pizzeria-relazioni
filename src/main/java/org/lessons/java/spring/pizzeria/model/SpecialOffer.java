@@ -15,7 +15,7 @@ public class SpecialOffer {
     private LocalDate expiredate;
     private String title;
 
-    @OneToMany
+    @ManyToOne
     private Pizza pizza;
 
     public Integer getId() {
