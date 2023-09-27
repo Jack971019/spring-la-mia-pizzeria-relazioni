@@ -12,7 +12,7 @@ public class SpecialOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate startDate;
-    private LocalDate expiredate;
+    private LocalDate expireDate;
     private String title;
 
     @ManyToOne
@@ -34,12 +34,12 @@ public class SpecialOffer {
         this.startDate = startDate;
     }
 
-    public LocalDate getExpiredate() {
-        return expiredate;
+    public LocalDate getExpireDate() {
+        return expireDate;
     }
 
-    public void setExpiredate(LocalDate expiredate) {
-        this.expiredate = expiredate;
+    public void setExpireDate(LocalDate expiredate) {
+        this.expireDate = expiredate;
     }
 
     public String getTitle() {

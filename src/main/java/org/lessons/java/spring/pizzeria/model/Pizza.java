@@ -21,7 +21,7 @@ public class Pizza {
     @NotNull
     private BigDecimal price;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pizza")
     private List<SpecialOffer> specialOffers;
 
     public int getId() {

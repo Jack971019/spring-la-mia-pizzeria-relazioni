@@ -32,7 +32,7 @@ public class SpecialOffersController {
             SpecialOffer specialOffer = new SpecialOffer();
             specialOffer.setPizza(pizza);
             specialOffer.setStartDate(LocalDate.now());
-            specialOffer.setExpiredate(LocalDate.now().plusDays(30));
+            specialOffer.setExpireDate(LocalDate.now().plusDays(30));
             model.addAttribute("specialOffer", specialOffer);
             return "specialOffers/form";
         } else {
@@ -43,6 +43,6 @@ public class SpecialOffersController {
     @PostMapping("/create")
     public String doCreate(@ModelAttribute("specialOffer") SpecialOffer specialOfferForm) {
         specialOfferRepository.save(specialOfferForm);
-        return "redirect:/create";
+        return "redirect:/show/" + specialOfferForm.getPizza().getId();
     }
 }
