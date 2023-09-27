@@ -36,8 +36,15 @@
         <tr th:each="specialOffer : ${pizza.specialOffers}">
             <td th:text="${specialOffer.title}"></td>
             <td th:text="${specialOffer.startDate}"></td>
-            <td th:text="${specialOffer.expireDate}">
-                <a class="btn btn-primary" th:href="@{/show/{id}(id=${pizza.id})}">Detail</a>
+            <td th:text="${specialOffer.expireDate}"></td>
+            <td>
+                <a th:href="@{/specialOffers/edit/{specialOfferId}(specialOfferId=${specialOffer.id})}">Edit</a>
+                <form th:action="@{/specialOffers/delete/{specialOfferId}(specialOfferId = ${specialOffer.id})}"
+                      method="POST">
+                    <button type="submit" class="btn btn-primary">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
         </tbody>

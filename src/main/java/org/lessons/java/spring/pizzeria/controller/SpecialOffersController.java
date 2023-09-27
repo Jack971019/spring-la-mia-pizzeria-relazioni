@@ -46,7 +46,7 @@ public class SpecialOffersController {
         return "redirect:/show/" + specialOfferForm.getPizza().getId();
     }
 
-    @GetMapping("/edit/{specialofferId}")
+    @GetMapping("/edit/{specialOfferId}")
     public String edit(@PathVariable("specialOfferId") Integer id, Model model) {
         Optional<SpecialOffer> specialOfferResult = specialOfferRepository.findById(id);
         if (specialOfferResult.isPresent()) {
