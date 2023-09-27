@@ -36,7 +36,9 @@
         <tr th:each="specialOffer : ${pizza.specialOffers}">
             <td th:text="${specialOffer.title}"></td>
             <td th:text="${specialOffer.startDate}"></td>
-            <td th:text="${specialOffer.expireDate}"></td>
+            <td th:text="${specialOffer.expireDate}">
+                <a class="btn btn-primary" th:href="@{/show/{id}(id=${pizza.id})}">Detail</a>
+            </td>
         </tr>
         </tbody>
     </table>

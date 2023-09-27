@@ -45,4 +45,35 @@ public class SpecialOffersController {
         specialOfferRepository.save(specialOfferForm);
         return "redirect:/show/" + specialOfferForm.getPizza().getId();
     }
+
+    @GetMapping("/edit/{specialofferId}")
+    public String edit(@PathVariable("specialOfferId") Integer id, Model model) {
+        Optional<SpecialOffer> specialOfferResult = specialOfferRepository.findById(id);
+        if (specialOfferResult.isPresent()) {
+            model.addAttribute("specialOffer", specialOfferResult.get());
+            return "specialOffers/edit";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/edit/{specialOfferId}")
+    public String doEdit(@PathVariable("specialOfferId") Integer specialOfferId,
+                         @ModelAttribute("specialOffer") SpecialOffer specialOfferForm) {
+        specialOfferForm.setId(specialOfferId);
+        specialOfferRepository.save(specialOfferForm);
+        return "redirect:/show/" + specialOfferForm.getPizza().getId();
+    }
+
+    @PostMapping("/delete/{specialOfferId}")
+    public String delete(@PathVariable("specialOfferId") Integer id) {
+        Optional<SpecialOffer> specialOfferResult = specialOfferRepository.findById(id);
+        if (specialOfferResult.isPresent()) {
+            Integer pizzaId = specialOfferResult.get().getPizza().getId();
+            specialOfferRepository.deleteById(id);
+            return "redirect:/show/" + pizzaId;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 }
