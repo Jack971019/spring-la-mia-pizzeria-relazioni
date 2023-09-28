@@ -15,7 +15,7 @@ public class IngredientsController {
     @Autowired
     IngredientsRepository ingredientsRepository;
 
-    @GetMapping
+    @GetMapping("/create")
     public String index(Model model) {
         model.addAttribute("ingredientList", ingredientsRepository.findAll());
         model.addAttribute("ingredientObj", new Ingredient());
@@ -27,7 +27,7 @@ public class IngredientsController {
                            RedirectAttributes redirectAttributes) {
         ingredientsRepository.save(ingredientForm);
         redirectAttributes.addFlashAttribute("message", "ingredient successfully added");
-        return "redirect:/ingredients";
+        return "redirect:/ingredients/create";
     }
 
     @PostMapping("/delete/ingredientsId")

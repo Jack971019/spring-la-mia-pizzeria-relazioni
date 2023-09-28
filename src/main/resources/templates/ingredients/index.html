@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <title>create new Ingredient</title>
 </head>
 <body>
+<div class="container">
+    <h1>Ingredients</h1>
 
+    <section class="mb-5">
+        <form
+                th:action="@{/ingredients/create}"
+                id="ingredient-form"
+                method="POST"
+                th:object="${ingredientObj}"
+        >
+            <div class="input-group">
+                <input type="text" class="form-control" id="ingredient-name" th:field="*{name}"
+                       placeholder="Add an ingredient">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>

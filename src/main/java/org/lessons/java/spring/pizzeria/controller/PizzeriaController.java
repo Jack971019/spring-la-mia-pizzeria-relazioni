@@ -2,6 +2,7 @@ package org.lessons.java.spring.pizzeria.controller;
 
 import jakarta.validation.Valid;
 import org.lessons.java.spring.pizzeria.model.Pizza;
+import org.lessons.java.spring.pizzeria.repository.IngredientsRepository;
 import org.lessons.java.spring.pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,8 @@ public class PizzeriaController {
 
     @Autowired
     private PizzaRepository pizzaRepository;
+    @Autowired
+    private IngredientsRepository ingredientsRepository;
 
     @GetMapping
     public String pizzeria(Model model) {
@@ -67,6 +70,7 @@ public class PizzeriaController {
         Optional<Pizza> result = pizzaRepository.findById(id);
         if (result.isPresent()) {
             model.addAttribute("pizza", result.get());
+            model.addAttribute("ingredients", ingredientsRepository.findAll());
             return "/edit";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
