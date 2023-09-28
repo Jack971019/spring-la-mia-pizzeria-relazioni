@@ -30,7 +30,7 @@ public class IngredientsController {
         return "redirect:/ingredients/create";
     }
 
-    @PostMapping("/delete/ingredientsId")
+    @PostMapping("/delete/{ingredientId}")
     public String delete(@PathVariable("ingredientsId") Integer id) {
         ingredientsRepository.deleteById(id);
         return "redirect:/ingredients";
